@@ -1,0 +1,43 @@
+<!-- Header Navigation -->
+<%- include partials/header.ejs %>
+
+  <!-- Navbar -->
+  <%- include partials/main_nav.ejs %>
+
+  <!-- Main Content -->
+  <%- include partials/content.ejs %>
+  <div class="card w-auto d-inline-block">
+    <div class="card-header">Contact Info</div>
+    <div class="panel card-body">
+      Email: <a href="mailto:jque4@my.centennialcollege.ca">jque4@my.centennialcollege.ca</a><br>
+      Phone: +1 (416)-289-5000 <br>
+    </div>
+  </div>
+  <br><br>
+
+
+      <form>
+        <fieldset id="registrationinfo">
+           <h3>Send Questions/Feedback: </h3><br>
+           <label for="fnameinput">First Name</label>
+           <input type="text" id="fnameinput" name="fname"><br>
+           <label for="lnameinput">Last Name</label>
+           <input type="text" id="lnameinput" name="lname"><br>
+           <label for="phoneinput">Phone</label>
+           <input type="text" id="phoneinput" name="phone"><br>
+           <label for="emailinput">Email</label>
+           <input type="text" id="emailinput" name="email"><br>
+           <label for="messageinput">Message</label> <br>
+           <textarea id="messageinput" name="message" cols="30" rows="5"></textarea><br>
+        </fieldset>
+        <fieldset id="submitbutton">
+           <input type="button" id="submitBtn" value="Submit" onclick="window.location.href='/home'">
+           <input type="reset" id="resetBtn" value="Clear Form">
+        </fieldset>
+     </form>
+  
+  <!-- Bottom Navigation -->
+  <%- include partials/bottom_nav.ejs %>
+
+<!-- Footer Navigation -->
+<%- include partials/footer.ejs %>
