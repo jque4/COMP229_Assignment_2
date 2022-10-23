@@ -8,6 +8,7 @@
  *    Filename: app.js
  */
 
+// Require Express and Mongoose
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
@@ -15,6 +16,7 @@ let mongoose = require('mongoose');
 // Creates reference to models
 let Record = require('../models/record');
 
+// Display (GET) Record Page
 module.exports.displayRecordList = (req, res, next) => {
     Record.find((err, recordList) => {
         if (err) {
@@ -29,17 +31,21 @@ module.exports.displayRecordList = (req, res, next) => {
     });
 }
 
+// Display (GET) New Record Page
 module.exports.displayAddPage = (req, res, next) => {
     res.render('record/add', {title: 'Add Contact', displayName: req.user ? req.user.displayName : ''})          
 }
 
+// Process (POST) Add Requests
 module.exports.processAddPage = (req, res, next) => {
+    // Create new Record
     let newRecord = Record({
         "name": req.body.name,
         "phone": req.body.phone,
         "email": req.body.email,
     });
 
+    // Save new Record
     Record.create(newRecord, (err, Record) =>{
         if (err) {
             console.log(err);
@@ -51,6 +57,7 @@ module.exports.processAddPage = (req, res, next) => {
 
 }
 
+// Display (GET) Update Page
 module.exports.displayUpdatePage = (req, res, next) => {
     let id = req.params.id;
 
@@ -67,9 +74,11 @@ module.exports.displayUpdatePage = (req, res, next) => {
     });
 }
 
+// Process (POST) Update Page
 module.exports.processUpdatePage = (req, res, next) => {
     let id = req.params.id
 
+    // Create Record Object
     let updatedRecord = Record({
         "_id": id,
         "name": req.body.name,
@@ -77,17 +86,19 @@ module.exports.processUpdatePage = (req, res, next) => {
         "email": req.body.email
     });
 
+    // Save edited Record
     Record.updateOne({_id: id}, updatedRecord, (err) => {
         if (err) {
             console.log(err);
             res.end(err);
         } else {
-            // refresh the record list
+            // Refresh the record list
             res.redirect('/recordlist');
         }
     });
 }
 
+// Process (POST) Delete Requests
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 

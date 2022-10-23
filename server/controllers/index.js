@@ -39,6 +39,7 @@ module.exports.displayContactPage = (req, res, next) => {
     res.render('contact', { title: 'Contact', displayName: req.user ? req.user.displayName : ''});
 }
 
+// Display (GET) Login Page
 module.exports.displayLoginPage = (req, res, next) => {
     // User Login Check
     if (!req.user) {
@@ -52,6 +53,7 @@ module.exports.displayLoginPage = (req, res, next) => {
     }
 }
 
+// Process (POST) Login Page
 module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) return next(err);
@@ -60,21 +62,19 @@ module.exports.processLoginPage = (req, res, next) => {
             return res.redirect('/login');
         }
         req.login(user, (err) => {
-            if (err) return next(err);
+            if (err) return next(err); // Error Handler
             const payload = {
                 id: user._id,
                 displayName: user.displayName,
                 username: user.username,
                 email: user.email
             }
-            /*const authToken = jwt.sign(payload, DB.Secret, {
-                expiresIn: 86400 // 1 Day
-            });*/
             return res.redirect('/recordlist');
         });
     }) (req, res, next);
 }
 
+// Display (GET) Register Page
 module.exports.displayRegisterPage = (req, res, next) => {
     // User Login Check
     if (!req.user) {
@@ -88,6 +88,7 @@ module.exports.displayRegisterPage = (req, res, next) => {
     }
 }
 
+// Process (POST) Register Page
 module.exports.processRegisterPage = (req, res, next) => {
     // Create New User Object
     let newUser = new User({
@@ -96,6 +97,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         displayName: req.body.displayName
     });
 
+    // Register User Data
     User.register(newUser, req.body.password, (err) => {
         if (err) { // On Registration Error
             console.log("Error Creating New User ");
@@ -106,12 +108,12 @@ module.exports.processRegisterPage = (req, res, next) => {
                 );
                 console.log('Registration Error: User Already Exists! ')
             }
-            return res.render('auth/register', {
+            return res.render('auth/register', { // Registration Page
                 title: 'Register',
                 messages: req.flash('registerMessage'),
                 displayName: req.user ? req.user.displayName : ''
             });
-        } else {
+        } else { // Passport Auth Successful
             return passport.authenticate('local')(req, res, () => {
                 res.redirect('/recordlist')
             });

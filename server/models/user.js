@@ -1,3 +1,13 @@
+/*    COMP 229
+ *    Week 6
+ *    Assignment 2
+
+ *    Author: Jack Que (301220028)
+ *    Date:   22/1/2022
+
+ *    Filename: user.js
+ */
+
 // Require Mongoose and Passport
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
