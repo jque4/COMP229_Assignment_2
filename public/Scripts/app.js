@@ -1,9 +1,9 @@
 /*    COMP 229
- *    Week 4
- *    Assignment 1
+ *    Week 6
+ *    Assignment 2
 
  *    Author: Jack Que (301220028)
- *    Date:   10/1/2022
+ *    Date:   22/1/2022
 
  *    Filename: app.js
  */

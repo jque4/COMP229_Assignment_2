@@ -1,0 +1,44 @@
+<!-- Header Navigation -->
+<%- include ../partials/header.ejs %>
+
+  <!-- Navbar -->
+  <%- include ../partials/main_nav.ejs %>
+
+  <!-- Main Content -->
+  <%- include ../partials/content_notitle.ejs %>
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+            <!-- Add Form -->
+            <form class="form" method="POST"><br>
+                <div class="form-group">
+                    <label for="nameTextField">Contact Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Contact's Name" name="name" required>
+                </div><br>
+
+                <div class="form-group">
+                    <label for="phoneTextField">Contact Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneTextField" placeholder="Enter the Contact's Phone Number" name="phone" required>
+                </div><br>
+
+                <div class="form-group">
+                    <label for="emailTextField">Contact Email Address</label>
+                    <input type="email" class="form-control" id="emailTextField" placeholder="Enter the Contact's Email Address" name="email" required>
+                </div><br>
+                
+                <!-- Submit/Cancel Buttons -->
+                <button class="btn btn-primary" type="submit">Add Item</button>
+                <a href="/recordlist" class="btn btn-secondary">Cancel</a>
+
+            </form>
+        </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <%- include ../partials/bottom_nav.ejs %>
+
+<!-- Footer Navigation -->
+<%- include ../partials/footer.ejs %>
+

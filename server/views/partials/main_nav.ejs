@@ -22,8 +22,20 @@
             <a class="nav-link <%= (title == 'Services' ? 'active' : '') %>" aria-current="page" href="/services"><i class="fa-solid fa-code"></i> Services </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <%= (title == 'Contact' ? 'active' : '') %>" aria-current="page" href="/contact"><i class="fa-solid fa-envelope"></i> Contact </a>
+          <a class="nav-link <%= (title == 'Records' ? 'active' : '') %>" aria-current="page" href="/recordlist"><i class="fa-solid fa-table-list"></i> Business Contacts </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link <%= (title == 'Contact' ? 'active' : '') %>" aria-current="page" href="/contact"><i class="fa-solid fa-envelope"></i> Contact Me </a>
+        </li>
+
+        <% if (typeof displayName == 'string' && displayName) { %>
+          <li class="navbar-text px-3"><i class="fas fa-sm fa-user pr-2">&nbsp;</i><%= displayName %></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">
+            <i class="fas fa-sm fa-sign-out-alt"></i> Logout </a></li>
+        <% } else { %>
+          <li class="nav-item px-3"><a href="/login" class="nav-link">
+            <i class="fas fa-sm fa-sign-in-alt"></i> Login </a></li>
+        <% } %>
       </ul>
     </div>
   </nav>

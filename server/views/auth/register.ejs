@@ -1,0 +1,50 @@
+<!-- Header Navigation -->
+<%- include ../partials/header.ejs %>
+
+  <!-- Navbar -->
+  <%- include ../partials/main_nav.ejs %>
+
+  <!-- Main Content -->
+  <%- include ../partials/content_notitle.ejs %>
+  <main class="container">
+    <!-- Message Area -->
+    <% if(messages.length > 0) {%>
+        <div class="alert alert-danger">
+            <%= messages %>
+        </div>
+    <% } %>
+
+    <div class="row">
+        <div class="offset-md-4 col-md-4">
+            <h1>Register</h1>
+            <form method="POST" autocomplete="off">
+                <fieldset class="form-group"><br>
+                    <label for="displayName">First Name: </label>
+                    <input type="text" class="form-control" name="displayName" placeholder="Name" id="displayName" required>
+                </fieldset>
+                <fieldset class="form-group"><br>
+                    <label for="email">Email: </label>
+                    <input type="email" class="form-control" name="email" placeholder="Email Address" id="email" required>
+                </fieldset>
+                <fieldset class="form-group"><br>
+                    <label for="username">Username: </label>
+                    <input type="text" class="form-control" name="username" placeholder="Username" id="username" required autofocus>
+                </fieldset>
+                <fieldset class="form-group"><br>
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control" name="password" placeholder="Password" id="password" required><br> or <a href="/login">Log In </a>
+                </fieldset>
+                <fieldset class="form-group text-right"><br>
+                    <input type="submit" class="btn btn-primary" value="Register">
+                    <a href="/"> <input type="button" class="btn" value="Cancel"> </a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
+
+  <!-- Bottom Navigation -->
+  <%- include ../partials/bottom_nav.ejs %>
+
+<!-- Footer Navigation -->
+<%- include ../partials/footer.ejs %>

@@ -5,13 +5,9 @@
  *    Author: Jack Que (301220028)
  *    Date:   22/1/2022
 
- *    Filename: app.css
+ *    Filename: db.js
  */
 
-
-/* Links */
-a {
-  text-decoration: none;
+module.exports = {
+    "URI": "mongodb://127.0.0.1/business_contacts"
 }
-
-
