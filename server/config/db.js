@@ -10,5 +10,6 @@
 
 // MongoDB URI
 module.exports = {
-    "URI": "mongodb://127.0.0.1/business_contacts"
+    "URI": "mongodb+srv://admin:admin@mongodbserver.cuvzzyc.mongodb.net/business_contacts?retryWrites=true&w=majority"
+    //"URI": "mongodb://127.0.0.1/business_contacts" // Local DB only
 }
